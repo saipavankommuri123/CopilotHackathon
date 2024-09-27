@@ -1,0 +1,29 @@
+.side-panel {
+  position: fixed;
+  top: 60px; /* Adjust based on the height of the navbar */
+  left: 0;
+  width: 200px;
+  height: calc(100% - 60px); /* Adjust based on the height of the navbar */
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.side-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-panel ul li {
+  margin: 10px 0;
+}
+
+.side-panel ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.side-panel ul li a:hover {
+  text-decoration: underline;
+}
