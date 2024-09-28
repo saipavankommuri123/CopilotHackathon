@@ -3,6 +3,9 @@ import { Form, Input, Button, Radio } from 'antd'
 import { signUp } from '../services/user'
 import { useNavigate } from 'react-router-dom'
 import './Signup.css'
+import { AppDispatch } from '../redux/store'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/slice/userSlice'
 
 const SignupPage: React.FC = () => {
   const [firstName, setFirstName] = useState('')
@@ -14,6 +17,8 @@ const SignupPage: React.FC = () => {
 
   const navigate = useNavigate()
 
+  const dispatch = useDispatch<AppDispatch>()
+
   const handleSubmit = async () => {
     // Encrypt the password
 
@@ -24,13 +29,14 @@ const SignupPage: React.FC = () => {
       email,
       role,
       password,
-      designation
+      designation,
     }
     console.log('Payload:', payload)
 
     try {
       const res = await signUp(payload)
       if (res) {
+        dispatch(setUserData(res))
         // Redirect to home page
         navigate('/')
       } else {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SidePanel from './components/SidePannel'
@@ -9,7 +9,19 @@ import RequirementsList from './components/RequirementsList'
 import RequirementDetail from './components/RequirementDetail'
 import MyRequirements from './components/MyRequirements'
 
+import { useSelector } from 'react-redux'
+import { RootState } from './redux/store'
+
+import { useNavigate } from 'react-router-dom'
+
 const HomePage = () => {
+  const userName = useSelector((state: RootState) => state.user.firstName)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (userName === '') {
+      navigate('/signup')
+    }
+  }, [])
   return (
     <div>
       <Navbar />
