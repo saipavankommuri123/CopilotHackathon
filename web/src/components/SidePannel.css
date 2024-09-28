@@ -1,13 +1,7 @@
 .side-panel {
-  position: fixed;
-  top: 60px; /* Adjust based on the height of the navbar */
-  left: 0;
   width: 200px;
-  height: calc(100% - 60px); /* Adjust based on the height of the navbar */
   background-color: #f4f4f4;
-  border-right: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 20px;
 }
 
 .side-panel ul {
@@ -15,15 +9,26 @@
   padding: 0;
 }
 
-.side-panel ul li {
-  margin: 10px 0;
+.side-panel li {
+  margin-bottom: 10px;
 }
 
-.side-panel ul li a {
+.side-panel a {
   text-decoration: none;
   color: #333;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.side-panel ul li a:hover {
-  text-decoration: underline;
+.side-panel a:hover {
+  background-color: #ddd;
+}
+
+.active-link {
+  background-color: lightgray;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
 }

@@ -1,0 +1,12 @@
+.main-content {
+  display: flex;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.requirement-card {
+  margin-bottom: 20px; /* Add spacing between cards */
+}

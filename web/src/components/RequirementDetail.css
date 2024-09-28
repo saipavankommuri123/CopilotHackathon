@@ -1,0 +1,17 @@
+.requirement-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .requirement-detail-container h1,
+  .requirement-detail-container h2 {
+    text-align: center;
+  }
+  
+  .requirement-detail-container form {
+    margin-top: 20px;
+  }

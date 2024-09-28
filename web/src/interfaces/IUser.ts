@@ -5,3 +5,8 @@ export interface ISignupPayload {
   role: '' | 'contributor' | 'coordinator'
   password: string
 }
+
+export interface ILoginPayload {
+  email: string
+  password: string
+}

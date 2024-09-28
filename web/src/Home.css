@@ -4,7 +4,7 @@
 }
 
 .content {
-  margin-left: 200px; /* Adjust based on the width of the side panel */
+  /* Adjust based on the width of the side panel */
   padding: 20px;
   flex-grow: 1;
 }

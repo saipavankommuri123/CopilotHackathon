@@ -1,0 +1,12 @@
+.contributions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contribution-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+  }

@@ -37,3 +37,18 @@
     width: 40px;
     border-radius: 50%;
   }
+
+  .navbar-notifications {
+    position: relative;
+    margin-right: 20px;
+  }
+
+  .notification-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+  }
+
+  .notification-icon:hover {
+    color: #ccc;
+  }
