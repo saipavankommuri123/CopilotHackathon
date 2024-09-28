@@ -25,19 +25,20 @@ export const signUp = async (payload: ISignupPayload) => {
 }
 
 export const login = async (payload: ILoginPayload) => {
-  return {
-    firstName: 'SAI',
-    lastName: 'PAVAN',
-    email: 'saikommuri@kpmg.com',
-    role: 'coordinator',
-    password: 'pavan123',
-  }
+  // return {
+  //   firstName: 'SAI',
+  //   lastName: 'PAVAN',
+  //   email: 'saikommuri@kpmg.com',
+  //   role: 'coordinator',
+  //   password: 'pavan123',
+  // }
   try {
-    const response = await axios.post('https://your-api-endpoint.com/signup', payload, {
+    const response = await axios.post('http://localhost:5000/api/users/login', payload, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
+    console.log('response', response)
 
     if (response.status === 200) {
       // Handle successful response

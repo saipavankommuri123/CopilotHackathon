@@ -5,7 +5,7 @@ import { Dropdown, Menu } from 'antd'
 import { AppDispatch, RootState } from '../redux/store'
 import { setUserData } from '../redux/slice/userSlice'
 import { useNavigate } from 'react-router-dom'
-import { BellOutlined, UserOutlined } from '@ant-design/icons'
+import { BellOutlined, DeploymentUnitOutlined, UserOutlined } from '@ant-design/icons'
 
 const Navbar = () => {
   const userName = useSelector((state: RootState) => state.user.firstName)
@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="/path/to/logo.png" alt="Logo" />
+        <DeploymentUnitOutlined />
       </div>
       <div className="navbar-search">
         <input type="text" placeholder="Search..." />
