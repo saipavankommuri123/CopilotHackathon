@@ -22,6 +22,7 @@ const Navbar = () => {
         lastName: '',
         email: '',
         role: '',
+        designation: '',
       }),
     )
     navigate('/login')

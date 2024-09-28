@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Form, Input, Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import ContributionsList from '../components/ContributionsList';
-import './RequirementDetail.css';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Form, Input, Upload, Button } from 'antd'
+import { UploadOutlined } from '@ant-design/icons'
+import ContributionsList from '../components/ContributionsList'
+import './RequirementDetail.css'
+import { fetchRequirementById } from '../services/requirements'
 
 const RequirementDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const [hasContributed, setHasContributed] = useState(true); // State to manage contribution status
+  const { id } = useParams<{ id: string }>()
+  const [hasContributed, setHasContributed] = useState(false) // State to manage contribution status
   const [contributionsData, setContributionsData] = useState<any>([
     {
       contribution: '1 contribution data',
@@ -29,27 +30,52 @@ const RequirementDetail: React.FC = () => {
       time: '2023-10-02 11:00 AM',
       designation: 'Project Manager',
     },
-  ]); // State to store contribution data
-  const [contributedData, setContributedData] = useState<any>(null);
+  ]) // State to store contribution data
+  const [contributedData, setContributedData] = useState<any>(null)
+  const [requirement, setRequirement] = useState({ description: '', domain: '' })
 
   const handleSubmit = (values: any) => {
-    console.log('Form values:', values);
-    setContributedData(values); // Save contribution data
-    setHasContributed(true); // Set contribution status to true
-  };
+    console.log('Form values:', values)
+    setContributedData(values) // Save contribution data
+    console.log('form values', values)
+    setHasContributed(true) // Set contribution status to true
+  }
 
   const handleEdit = () => {
-    setHasContributed(false); // Set contribution status to false to show the form
-  };
+    setHasContributed(false) // Set contribution status to false to show the form
+  }
 
-  const coordinatorEmail: string = 'sakkommuri';
-  const requirementEmail: string = 'sakkommuri';
+  const coordinatorEmail: string = 'sakiommuri'
+  const requirementEmail: string = 'sakkommuri'
+
+  const getRequirement = async () => {
+    const res = await fetchRequirementById(id)
+    if (res) {
+      setRequirement(res)
+    } else {
+      // Show error message
+      alert('Failed to fetch requirements. Please try again.')
+    }
+  }
+
+  useEffect(() => {
+    getRequirement()
+  }, [])
 
   return (
     <div className="requirement-detail-container">
       <h1>Requirement Detail</h1>
       <p>Requirement ID: {id}</p>
-      {/* Display more details about the requirement here */}
+      {requirement && (
+        <div>
+          <p>
+            <strong>Description:</strong> {requirement.description}
+          </p>
+          <p>
+            <strong>Domain:</strong> {requirement.domain}
+          </p>
+        </div>
+      )}
 
       {coordinatorEmail === requirementEmail ? (
         <div>
@@ -76,16 +102,14 @@ const RequirementDetail: React.FC = () => {
             <Form.Item
               name="contribution"
               label="Contribution"
-              rules={[{ required: true, message: 'Please input your contribution!' }]}
-            >
+              rules={[{ required: true, message: 'Please input your contribution!' }]}>
               <Input.TextArea rows={4} />
             </Form.Item>
             <Form.Item
               name="attachments"
               label="Attachments"
               valuePropName="fileList"
-              getValueFromEvent={(e: any) => (Array.isArray(e) ? e : e && e.fileList)}
-            >
+              getValueFromEvent={(e: any) => (Array.isArray(e) ? e : e && e.fileList)}>
               <Upload name="files" action="/upload.do" listType="text">
                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
               </Upload>
@@ -99,7 +123,7 @@ const RequirementDetail: React.FC = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default RequirementDetail;
+export default RequirementDetail

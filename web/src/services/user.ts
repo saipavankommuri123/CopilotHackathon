@@ -1,16 +1,17 @@
 import axios from 'axios'
 import { ILoginPayload, ISignupPayload } from '../interfaces/IUser'
+const API_URL = 'http://localhost:5000/api/users/signup'
 
 export const signUp = async (payload: ISignupPayload) => {
-  return { data: 'yes' }
+  //return { data: 'yes' }
   try {
-    const response = await axios.post('https://your-api-endpoint.com/signup', payload, {
+    const response = await axios.post(API_URL, payload, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       // Handle successful response
       console.log('Signup successful')
       return response.data

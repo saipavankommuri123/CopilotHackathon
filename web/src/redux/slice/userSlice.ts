@@ -5,6 +5,7 @@ interface UserState {
   lastName: string
   email: string
   role: '' | 'contributor' | 'coordinator'
+  designation: string
 }
 
 const initialState: UserState = {
@@ -12,6 +13,7 @@ const initialState: UserState = {
   lastName: '',
   email: '',
   role: '',
+  designation: '',
 }
 
 const userSlice = createSlice({

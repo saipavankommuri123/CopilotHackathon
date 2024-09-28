@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Input, Button, Modal } from 'antd'
 import RequirementCard from './RequirementCard'
+import { fetchAllRequirements } from '../services/requirements'
 
 const RequirementsList: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -43,6 +44,21 @@ const RequirementsList: React.FC = () => {
 
   const [isCoordinator] = useState(true) // Replace with actual role check
   const [form] = Form.useForm()
+  const getRequirements = async () => {
+    const res = await fetchAllRequirements()
+    if (res) {
+      setRequirements(res)
+    } else {
+      // Show error message
+      alert('Failed to fetch requirements. Please try again.')
+    }
+  }
+
+  useEffect(() => {
+    // Fetch requirements data from the server
+
+    getRequirements()
+  }, [])
 
   const handleAddRequirement = (values: any) => {
     const newRequirement = {

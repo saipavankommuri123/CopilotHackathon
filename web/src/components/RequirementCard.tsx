@@ -42,7 +42,7 @@ const RequirementCard: React.FC<RequirementCardProps> = ({
             <span className="requirement-card-designation">{designation}</span>
           </div>
         </div>
-        <span className="requirement-card-time">{time}</span>
+        <span className="requirement-card-time">Posted On: {time}</span>
         <div className="requirement-card-button">
           <Button type="primary" onClick={handleViewDetails}>
             View Details
